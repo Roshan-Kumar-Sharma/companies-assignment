@@ -76,7 +76,7 @@ function login(e) {
         password: loginForm.elements["loginPassword"].value
     };
 
-    const users = JSON.parse(localStorage.getItem("users"));
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
     let doesExist = false, isDataValid = false, userName;
     users.forEach((user) => {
@@ -94,10 +94,12 @@ function login(e) {
     });
     if (!doesExist) {
         showPopup("login", "Account doesn't exist. Please register first!!!", 3000);
+        cleanupForm("login");
         return;
     }
     if(!isDataValid){
         showPopup("login", "Invalid Credentials!!!", 3000);
+        cleanupForm("login");
         return;
     }
     location.href = `videosList.html?user=${userName}&loggedIn=true`;
