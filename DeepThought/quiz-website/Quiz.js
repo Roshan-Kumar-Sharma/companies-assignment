@@ -197,7 +197,7 @@ function render() {
         if(timeRemaining <= 0){
             clearInterval(clearTimer)
             submitButton.disabled = true;
-            if(getCurrentQuestion() != getTotalQuestions()-1)
+            if(currentQuestion != getTotalQuestions()-1)
                 nextButton.disabled = false;
             else
                 endGame()
