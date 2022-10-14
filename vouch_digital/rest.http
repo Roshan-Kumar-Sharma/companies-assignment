@@ -1,6 +1,6 @@
 ### root route
-GET http://localhost:8080/api/v1/contacts/add
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImFsbCIsImlhdCI6MTY2NTcyMTI2MiwiZXhwIjoxNjY1NzIxMzIyfQ.3A1BKfRci0-vIH3wEQ91ZMPnTwozrKev-R7zQJebqF8
+POST http://localhost:8080/api/v1/contacts/add
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImFkZCIsImlhdCI6MTY2NTczMTMxNiwiZXhwIjoxNjY1NzMxNjE2fQ.zv0_qL5wunSFbsKTqhQuztwWVnJRXCHvFeOf6zLrtcc
 Content-Type: application/json
 
 {
@@ -10,12 +10,84 @@ Content-Type: application/json
     "address": "89 address1 pin 888888"
 }
 
-### root route
-GET http://localhost:8080/api/v1/contacts/
+### Add bulk contact
+POST http://localhost:8080/api/v1/contacts/add/bulk_contact
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImFsbCIsImlhdCI6MTY2NTc0MzA5MywiZXhwIjoxNjY1NzQzMzkzfQ.6BjA3nwxBhEdJ-FOdxNjso4Cx_tQ7tCihKxWoMb7aiQ
+Content-Type: application/json
+
+[
+    {
+        "name": "John Wick",
+        "email": "john.wick@gmail.com",
+        "phone": 1234567890,
+        "address": "89 address1 pin 888888"
+    },
+    {
+        "name": "John Rambo",
+        "email": "john.rambo@gmail.com",
+        "phone": 1122334455,
+        "address": "89 address1 pin 888888"
+    },
+    {
+        "name": "David Joe",
+        "email": "david.joe@gmail.com",
+        "phone": 9988776655,
+        "address": "89 address1 pin 888888"
+    },
+    {
+        "name": "File Explorer",
+        "email": "file.explorer@gmail.com",
+        "phone": 5566112233,
+        "address": "89 address1 pin 888888"
+    }
+]
+
+### Get contact based on email or phone number
+GET http://localhost:8080/api/v1/contacts/find
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImFsbCIsImlhdCI6MTY2NTc0MzA5MywiZXhwIjoxNjY1NzQzMzkzfQ.6BjA3nwxBhEdJ-FOdxNjso4Cx_tQ7tCihKxWoMb7aiQ
+Content-Type: application/json
+
+{
+    "phone": 1234567890
+}
+
+# {
+#     "email": "john.rambo@gmail.com"
+# }
+
+### Get paginated result
+GET http://localhost:8080/api/v1/contacts/find/pagination?page_number=1&&contact_per_page=4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImFsbCIsImlhdCI6MTY2NTc0MzA5MywiZXhwIjoxNjY1NzQzMzkzfQ.6BjA3nwxBhEdJ-FOdxNjso4Cx_tQ7tCihKxWoMb7aiQ
+
+### update contact
+PUT http://localhost:8080/api/v1/contacts/update
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6InVwZGF0ZSIsImlhdCI6MTY2NTc0MjI0NSwiZXhwIjoxNjY1NzQyNTQ1fQ.HtoaQwFHnx5X-6SL4UlyatMcZ7v8LcbcbEvrjauS-9k
+Content-Type: application/json
+
+{
+    "email": "john.wick@gmail.com",
+    "update": {
+        "name": "Tom Harrington",
+        "address": "10/A New York Street PIN 777777"
+    }
+}
+
+### update contact
+DELETE  http://localhost:8080/api/v1/contacts/delete
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImRlbGV0ZSIsImlhdCI6MTY2NTc0MzA2NSwiZXhwIjoxNjY1NzQzMzY1fQ.lssqHdsYYB9SWWBN7bZtNuZ_jnQ9b7OytRio72WyHQY
+Content-Type: application/json
+
+{
+    "phone": 1122334455
+}
+
+# {
+#     "email": "john.wick@gmail.com"
+# }
 
 
 ### Get JWT token
-GET http://localhost:8080/getToken?exp=1m
+GET http://localhost:8080/getToken?exp=5m
 Content-Type: application/json
 
 {
