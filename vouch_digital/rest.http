@@ -1,0 +1,23 @@
+### root route
+GET http://localhost:8080/api/v1/contacts/add
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImFsbCIsImlhdCI6MTY2NTcyMTI2MiwiZXhwIjoxNjY1NzIxMzIyfQ.3A1BKfRci0-vIH3wEQ91ZMPnTwozrKev-R7zQJebqF8
+Content-Type: application/json
+
+{
+    "name": "John Wick",
+    "email": "john.wick@gmail.com",
+    "phone": 1234567890,
+    "address": "89 address1 pin 888888"
+}
+
+### root route
+GET http://localhost:8080/api/v1/contacts/
+
+
+### Get JWT token
+GET http://localhost:8080/getToken?exp=1m
+Content-Type: application/json
+
+{
+    "scope": "all"
+}

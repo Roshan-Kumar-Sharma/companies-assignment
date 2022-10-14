@@ -4,5 +4,9 @@ toDoApplication/
 eduFund/
 inkoop/
 shooting-game/
-vouch_digital/
+
+vouch_digital/node_modules
+vouch_digital/.env
+vouch_digital/package-lock.json
+
 XivTech/
