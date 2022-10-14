@@ -2,3 +2,8 @@ theTannMannFoundation/TTMF_assignment_video.mkv
 eduFund/
 inkoop/
 shooting-game/
+
+vouch_digital/node_modules
+vouch_digital/.env
+vouch_digital/package-lock.json
+
